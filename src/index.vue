@@ -89,12 +89,14 @@
           thumbnailHeight: this.thumbnailHeight,
           maxFiles: this.maxNumberOfFiles,
           maxFilesize: this.maxFileSizeInMB,
-          dictRemoveFile: 'Remove',
+          dictRemoveFile: 'Ta bort',
+            dictCancelUpload: 'Avbryt uppladdning',
+            dictInvalidFileType: 'Filtypen ej giltig',
           addRemoveLinks: this.showRemoveLink,
           acceptedFiles: this.acceptedFileTypes,
           autoProcessQueue: this.autoProcessQueue,
-          dictDefaultMessage: this.cloudIcon +'<br>Drop files here to upload',
-          previewTemplate: '<div class="dz-preview dz-file-preview">  <div class="dz-image" style="width:' + this.thumbnailWidth + 'px;height:' + this.thumbnailHeight + 'px"><img data-dz-thumbnail /></div>  <div class="dz-details">    <div class="dz-size"><span data-dz-size></span></div>    <div class="dz-filename"><span data-dz-name></span></div>  </div>  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>  <div class="dz-error-message"><span data-dz-errormessage></span></div>  <div class="dz-success-mark">' + this.doneIcon + ' </div>  <div class="dz-error-mark' + this.errorIcon + '</div></div>'
+          dictDefaultMessage: this.cloudIcon +'<br>Dra och släpp dina filer här eller klicka för att ladda upp.',
+          previewTemplate: '<div class="dz-preview dz-file-preview">  <div class="dz-image" style="width:' + this.thumbnailWidth + 'px;height:' + this.thumbnailHeight + 'px"><img data-dz-thumbnail /></div>  <div class="dz-details">    <div class="dz-size"><span data-dz-size></span></div>    <div class="dz-filename"><span data-dz-name></span></div>  </div>  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>  <div class="dz-error-message"><span data-dz-errormessage></span></div>  <div class="dz-success-mark">Uppladdningen lyckades! ' + this.doneIcon + ' </div>  <div class="dz-error-mark">' + this.errorIcon + '</div></div>'
         })
       } else {
         this.dropzone = new Dropzone(element, this.dropzoneOptions)
@@ -129,12 +131,17 @@
 <style scoped>
   @import url('../node_modules/dropzone/dist/dropzone.css');
 
+  @import url('../dist/style.css');
+
   .dropzone{
-    border: 2px solid #E5E5E5;
     font-family: 'Arial', sans-serif;
     letter-spacing: 0.2px;
     color: #777;
     transition: background-color .2s linear;
+
+      border: 2px dashed #0087F7;
+      border-radius: 5px;
+      background: white;
   }
 
   .dropzone:hover{
@@ -198,10 +205,36 @@
   .dropzone .dz-preview .dz-success-mark, .dropzone .dz-preview .dz-error-mark {
     margin-left: -40px;
     margin-top: -50px;
+
+
+  }
+
+  .dropzone .dz-preview .dz-error-mark, .dropzone .dz-preview .dz-success-mark {
+      pointer-events: none;
+      opacity: 1;
+      z-index: 500;
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 50%;
+      margin-left: -85px;
+      text-align: center;
+      margin-top: -21px;
+      width: 180px;
   }
 
   .dropzone .dz-preview .dz-success-mark i, .dropzone .dz-preview .dz-error-mark i {
     color: white;
     font-size: 5rem;
   }
+
+    .dz-error-mark .dz-remove {
+        font-size: 14px;
+        text-align: center;
+        display: block;
+        cursor: pointer;
+        margin-top: 12px;
+        border: none;
+    }
+
 </style>
