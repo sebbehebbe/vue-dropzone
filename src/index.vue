@@ -71,25 +71,13 @@
     },
     computed: {
       cloudIcon: function () {
-        if (this.useFontAwesome) {
-          return '<i class="fa fa-cloud-upload"></i>'
-        } else {
-          return  '<i class="material-icons">cloud_upload</i>'
-        }
+          return '<i class="fa fa-cloud-upload"></i>';
       },
       doneIcon: function () {
-        if (this.useFontAwesome) {
-          return '<i class="fa fa-check"></i>'
-        } else {
-          return  ' <i class="material-icons">done</i>'
-        }
+          return '<i class="fa fa-check"></i>';
       },
       errorIcon: function () {
-        if (this.useFontAwesome) {
-          return '<i class="fa fa-close"></i>'
-        } else {
-          return  ' <i class="material-icons">error</i>'
-        }
+          return '<i class="fa fa-close"></i>';
       }
     },
     mounted () {
